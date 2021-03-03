@@ -1,0 +1,40 @@
+<div class="d-flex justify-content-between" id="task" *ngIf="!edit">
+    <div class="">
+        <label class="container m-0"> <span
+                [ngClass]="{'crossed-out': task.completed, 'text-warning': task.priority}">{{task.task | titlecase}}</span>
+            <input type="checkbox" [(ngModel)]="task.completed">
+            <span [ngClass]="{'checkmark-priority': task.priority}" class="checkmark"></span>
+        </label>
+    </div>
+
+    <div id="edit-btn" class="mr-2">
+        <button (click)="toggleEdit()" class="btn btn-transperant shadow-none ">
+            <i class="fas fa-pen gray"></i>
+        </button>
+
+        <button (click)="delete()" class="btn btn-transperant shadow-none m-0 p-0">
+            <i class="fas fa-trash text-danger"></i>
+        </button>
+    </div>
+</div>
+
+<div id="edit-task" *ngIf="edit">
+    <!-- <input [(ngModel)]="task.task" type="text" class="form-control d-block"> -->
+
+    <div class="input-outer">
+        <input [(ngModel)]="task.task" type="text" class="form-control border-0 shadow-none">
+        <button class="btn btn-outline-success btn-sm mr-2">Today</button>
+        <button [ngClass]="{'btn-outline-warning': !priority, 'btn-warning': priority}" class="btn btn-sm"
+            (click)="task.priority = !task.priority; priority = !priority" ngbTooltip="Set as priority"><i
+                class="fas fa-exclamation-triangle"></i></button>
+    </div>
+
+    <div class="mt-3">
+
+        <button class="btn btn-primary btn-sm  mr-2" (click)="updateTask()">
+            Save
+        </button>
+        <button class="btn btn-secondary btn-sm" (click)="toggleEdit()">Cancel</button>
+    </div>
+</div>
+<hr class="division">

@@ -1,0 +1,11 @@
+#edit-btn {
+    display: none;
+    font-size: 14px;
+    height: 14px;
+    margin: 0;
+    padding: 0
+}
+
+#task:hover  #edit-btn {
+    display: inline-block;
+}

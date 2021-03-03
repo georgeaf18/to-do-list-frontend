@@ -1,0 +1,23 @@
+<div class="mb-5">
+    <h3 class='d-inline mr-2'>Upcoming</h3>
+</div>
+
+<ng-container *ngFor="let timeSlot of tasksInTimeSlot">
+
+    <div>
+        <h5>{{timeSlot.date | date}}</h5>
+
+        <div class="mt-3 ml-5" *ngFor="let task of timeSlot.tasks">
+            <app-task-item [task]="task" (updatedTask)="getTodaysTask()"></app-task-item>
+        </div>
+
+    </div>
+    <!-- <hr class="division"> -->
+
+</ng-container>
+
+
+<!-- <ng-container *ngFor="let task of tasks | tasksFilter">
+    <app-task-item *ngIf="task.completed === false" [task]="task" (updatedTask)="getTodaysTask()"></app-task-item>
+</ng-container> -->
+<app-new-task (addedTask)="getTodaysTask()"></app-new-task>

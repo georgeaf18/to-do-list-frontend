@@ -1,0 +1,30 @@
+<div class="w-100" *ngIf="!addMode">
+    <button class="btn btn-transperant shadow-none" (click)="addMode = true">
+        <small> <i class="fas fa-plus electric-blue mr-1"></i> <span class="gray"> Add New Task</span></small>
+    </button>
+</div>
+
+<div class="w-100" *ngIf="addMode">
+    <div class="input-outer row">
+        <!-- Task -->
+        <input [(ngModel)]="task" type="text" class="form-control border-0 shadow-none col-9">
+
+        <!-- Date -->
+        <input id="date" placeholder="MM/DD/YYYY" name="dp" ngbDatepicker #d="ngbDatepicker" placement="bottom"
+            [minDate]="minDate" [(ngModel)]="datePickerDate" (ngModelChange)="formatDate()" class="text-primary"
+            [firstDayOfWeek]="7" readonly style=" width: 0px!important; visibility: hidden" />
+        <button class="btn btn-outline-success btn-sm mr-2 calendar col-2"
+            (click)="d.toggle()">{{displayedDate === "Today" || displayedDate === "Tomorrow" ? displayedDate : displayedDate | date}}</button>
+
+        <!-- Priority -->
+        <button [ngClass]="{'btn-outline-warning': !priority, 'btn-warning': priority}" class="btn btn-sm"
+            (click)="togglePriority()" ngbTooltip="Set as priority"><i class="fas fa-exclamation-triangle"></i></button>
+    </div>
+    <div class="mt-3">
+
+        <button class="btn btn-primary btn-sm  mr-2" (click)="submit()">
+            Save
+        </button>
+        <button class="btn btn-secondary btn-sm" (click)="addMode = false">Cancel</button>
+    </div>
+</div>

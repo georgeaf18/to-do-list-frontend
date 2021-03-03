@@ -1,0 +1,7 @@
+<h3 class='d-inline mr-2'>Today</h3> <small>{{todaysDate | date}}</small>
+<hr class="division">
+
+<ng-container *ngFor="let task of tasks | tasksFilter">
+    <app-task-item *ngIf="task.completed === false" [task]="task" (updatedTask)="getTodaysTask()"></app-task-item>
+</ng-container>
+<app-new-task (addedTask)="getTodaysTask()"></app-new-task>

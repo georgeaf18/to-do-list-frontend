@@ -1,0 +1,6 @@
+<h3 class='d-inline mr-2'>Overdue</h3>
+<hr class="division">
+
+<ng-container *ngFor="let task of tasks | tasksFilter">
+    <app-task-item *ngIf="task.completed === false" [task]="task" (updatedTask)="getTodaysTask()"></app-task-item>
+</ng-container>
