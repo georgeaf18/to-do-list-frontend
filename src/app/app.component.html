@@ -1,16 +1,14 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<app-navbar></app-navbar>
+<app-navbar (showMenu)="showMenu = !showMenu"></app-navbar>
 
 <div id="container">
 
-  <div id="menu">
-
+  <div id="menu" *ngIf="showMenu">
     <app-menu></app-menu>
   </div>
 
-  <div class="m-5 w-100">
+  <div class="m-5 w-100" id="task-container">
     <router-outlet></router-outlet>
-
   </div>
 
 </div>

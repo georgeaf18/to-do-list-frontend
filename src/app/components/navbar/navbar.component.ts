@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-navbar',
@@ -10,6 +10,12 @@ export class NavbarComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+  }
+
+  @Output() showMenu = new EventEmitter<any>();
+
+  toggleMenu = () => {
+    this.showMenu.emit();
   }
 
 }
